@@ -10,4 +10,6 @@ use Spatie\Enum\Enum;
  * @method static self canceled()
  * @method static self expired()
  */
-class InviteStatus extends Enum {}
+class InviteStatus extends Enum
+{
+}

@@ -4,11 +4,11 @@ namespace Distortion\LaravelInvite\Concerns;
 
 use Distortion\LaravelInvite\Enums\InviteStatus;
 
-trait Status {
-
+trait Status
+{
     /**
      * Checks invitation is successful.
-     * 
+     *
      * @return bool
      */
     public function isSuccessful()
@@ -18,7 +18,7 @@ trait Status {
 
     /**
      * Checks invitation is pending.
-     * 
+     *
      * @return bool
      */
     public function isPending()
@@ -28,7 +28,7 @@ trait Status {
 
     /**
      * Checks invitation is canceled.
-     * 
+     *
      * @return bool
      */
     public function isCanceled()
@@ -38,12 +38,11 @@ trait Status {
 
     /**
      * Checks invitation is canceled.
-     * 
+     *
      * @return bool
      */
     public function isExpired()
     {
         return $this->status === InviteStatus::expired()->value;
     }
-
 }

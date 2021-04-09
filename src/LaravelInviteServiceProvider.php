@@ -33,17 +33,17 @@ class LaravelInviteServiceProvider extends ServiceProvider
 
     /**
      * Register application migrations.
-     * 
+     *
      * @return void
      */
-    private function registerMigrations() 
+    private function registerMigrations()
     {
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 
     /**
      * Register publishable assets.
-     * 
+     *
      * @return void
      */
     private function registerPublishableAssets()
@@ -56,10 +56,8 @@ class LaravelInviteServiceProvider extends ServiceProvider
 
             // Migrations
             $this->publishes([
-                __DIR__.'/../database/migrations/2021_04_09_000000_create_invites_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_invites_table.php'),
+                __DIR__.'/../database/migrations/2021_04_09_000000_create_invites_table.php' => database_path('migrations/'.date('Y_m_d_His', time()).'_create_invites_table.php'),
             ], 'migrations');
-
-
         }
     }
 }
