@@ -9,7 +9,6 @@ use RuntimeException;
 
 class LaravelInvite implements InviteContract
 {
-
     public $manager;
 
     public function __construct(InviteManagerContract $manager)
@@ -18,18 +17,18 @@ class LaravelInvite implements InviteContract
     }
 
     /**
-     * Create invitation
+     * Create invitation.
      * @param string $email
      * @param int $referer
      * @param null $expires
-     * 
+     *
      * @return string
      */
     public function invite($email, $referer, $expires = null): string
     {
-
         $expires = $expires === null ? Carbon::now()->addHours(config('laravelinvite.expiration')) : $expires;
         $this->isValidEmail($email);
+
         return $this->manager->invite($email, $referer, $expires);
     }
 
@@ -42,13 +41,13 @@ class LaravelInvite implements InviteContract
     }
 
     /**
-     * Check email address is valid
+     * Check email address is valid.
      * @param string email
      * @return self
      */
     private function isValidEmail($email)
     {
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
             throw new RuntimeException("Invalid email: {$email}", 1);
         }
 

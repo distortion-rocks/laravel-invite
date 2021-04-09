@@ -4,7 +4,6 @@ namespace Distortion\LaravelInvite\Tests\Unit;
 
 use Distortion\LaravelInvite\Enums\InviteStatus;
 use Distortion\LaravelInvite\Facades\Invite;
-use Distortion\LaravelInvite\Models\InviteModel;
 use Distortion\LaravelInvite\Tests\Fixtures\User;
 use Distortion\LaravelInvite\Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -58,7 +57,6 @@ class InviteTest extends TestCase
     /** @test */
     public function can_get_instance_of_invite_with_code()
     {
-
         $code = Invite::invite('test@example123.net', 1);
 
         $result = Invite::get($code);

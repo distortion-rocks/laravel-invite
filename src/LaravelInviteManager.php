@@ -2,16 +2,13 @@
 
 namespace Distortion\LaravelInvite;
 
-use Carbon\Carbon;
 use Distortion\LaravelInvite\Contracts\InviteManagerContract;
 use Distortion\LaravelInvite\Enums\InviteStatus;
 use Distortion\LaravelInvite\Exceptions\InvalidTokenException;
-use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class LaravelInviteManager implements InviteManagerContract
 {
-
     /**
      * Instance of invite model.
      */
@@ -29,7 +26,6 @@ class LaravelInviteManager implements InviteManagerContract
 
     /**
      * Create a new invitation.
-     * 
      */
     public function invite(string $email, int $referrer_id, ?string $expiration_date = null): string
     {
@@ -54,7 +50,7 @@ class LaravelInviteManager implements InviteManagerContract
 
     /**
      * Save a new invite model.
-     * 
+     *
      * @param string $code
      * @return self
      */
@@ -70,25 +66,27 @@ class LaravelInviteManager implements InviteManagerContract
 
         if ($this->model->save()) {
             $this->code = $code;
+
             return $this;
         }
     }
 
     /**
      * Set the invite code.
-     * 
+     *
      * @param string $code
      * @return self
      */
     public function setCode(string $code): LaravelInviteManager
     {
         $this->code = $code;
+
         return $this;
     }
 
     /**
      * Generate a new ivnite token key.
-     * 
+     *
      * @return string
      */
     private function generateInviteToken(): string
@@ -113,23 +111,24 @@ class LaravelInviteManager implements InviteManagerContract
 
     /**
      * Get the new instance of the invite model.
-     * 
+     *
      * @param bool $newInstance
      * @return Model
      * @throws InvalidTokenException
      */
     private function getModelInstance(bool $newInstance = false)
     {
-
         $model = config('laravelinvite.invite-model');
 
         if ($newInstance) {
             $this->model = new $model;
+
             return $this;
         }
 
         try {
             $this->model = (new $model)->where('code', $this->code)->firstOrFail();
+
             return $this;
         } catch (ModelNotFoundException $e) {
             throw new InvalidTokenException("Invalid token: {$this->code}", 401);
