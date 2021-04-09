@@ -2,4 +2,6 @@
 
 namespace Distortion\LaravelInvite\Models;
 
-class InviteModel {}
+class InviteModel
+{
+}

@@ -7,18 +7,18 @@ return [
 
     /**
      * Default expiration time period
-     * Time defined in hours
+     * Time defined in hours.
      */
     'expire' => 48,
 
     /**
-     * User model
+     * User model.
      */
     'Model' => App\Models\User::class,
 
     /**
-     * Invitation model
+     * Invitation model.
      */
-    'InviteModel' => Distortion\LaravelInvite\Models\InviteModel::class
+    'InviteModel' => Distortion\LaravelInvite\Models\InviteModel::class,
 
 ];
