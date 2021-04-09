@@ -1,0 +1,54 @@
+{
+    "name": "distortion/laravel-invite",
+    "description": "Provides a clean and simple interface to add invites to any model in your application.",
+    "keywords": [
+        "distortion",
+        "laravel-invite"
+    ],
+    "homepage": "https://github.com/distortion/laravel-invite",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Vaugen Wakeling",
+            "email": "vaugen.wakeling@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "^6.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Distortion\\LaravelInvite\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Distortion\\LaravelInvite\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Distortion\\LaravelInvite\\LaravelInviteServiceProvider"
+            ],
+            "aliases": {
+                "LaravelInvite": "Distortion\\LaravelInvite\\LaravelInvite"
+            }
+        }
+    }
+}
