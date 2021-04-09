@@ -14,11 +14,11 @@ return [
     /**
      * User model.
      */
-    'Model' => App\Models\User::class,
+    'model' => env('USER_MODEL', App\Models\User::class),
 
     /**
      * Invitation model.
      */
-    'InviteModel' => Distortion\LaravelInvite\Models\InviteModel::class,
+    'invite-model' => env('INVITE_MODEL', Distortion\LaravelInvite\Models\InviteModel::class),
 
 ];

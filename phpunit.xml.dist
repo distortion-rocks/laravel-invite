@@ -11,8 +11,11 @@
          stopOnFailure="false">
     <testsuites>
         <testsuite name="Unit Tests">
-            <directory>tests</directory>
+            <directory>tests/Unit</directory>
         </testsuite>
     </testsuites>
-    <php></php>
+    <php>
+        <env name="DB_CONNECTION" value="testing" />
+        <env name="USER_MODEL" value="Distortion\LaravelInvite\Tests\Fixtures\User" />
+    </php>
 </phpunit>

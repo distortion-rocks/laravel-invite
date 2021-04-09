@@ -11,37 +11,10 @@ class LaravelInviteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        /*
-         * Optional methods to load your package assets
-         */
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-invite');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-invite');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+        $this->registerPublishableAssets();
 
-        if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('laravel-invite.php'),
-            ], 'config');
-
-            // Publishing the views.
-            /*$this->publishes([
-                __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-invite'),
-            ], 'views');*/
-
-            // Publishing assets.
-            /*$this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/laravel-invite'),
-            ], 'assets');*/
-
-            // Publishing the translation files.
-            /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/laravel-invite'),
-            ], 'lang');*/
-
-            // Registering package commands.
-            // $this->commands([]);
-        }
+        // Package items
+        $this->registerMigrations();
     }
 
     /**
@@ -50,11 +23,43 @@ class LaravelInviteServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'laravel-invite');
+        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'laravelinvite');
 
         // Register the main class to use with the facade
         $this->app->singleton('invite', function () {
             return new LaravelInvite;
         });
+    }
+
+    /**
+     * Register application migrations.
+     * 
+     * @return void
+     */
+    private function registerMigrations() 
+    {
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+    }
+
+    /**
+     * Register publishable assets.
+     * 
+     * @return void
+     */
+    private function registerPublishableAssets()
+    {
+        if ($this->app->runningInConsole()) {
+            // Config
+            $this->publishes([
+                __DIR__.'/../config/config.php' => config_path('laravelinvite.php'),
+            ], 'config');
+
+            // Migrations
+            $this->publishes([
+                __DIR__.'/../database/migrations/2021_04_09_000000_create_invites_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_invites_table.php'),
+            ], 'migrations');
+
+
+        }
     }
 }
