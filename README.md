@@ -16,8 +16,21 @@ You can install the package via composer:
 
 ## Usage
 
+### Create a new invite
 ``` php
-// Usage description here
+$user = Auth::user()
+
+/**
+ * Will create & save a new invite and return the invite code for use later.
+ * @return string code 
+ */
+$code = Invite::invite('invite@example.com', $user->id);
+
+/**
+ * Creates an invite with a custom expiration date/time
+ * @return string code 
+ */
+$code = Invite::invite('invite@example.com', $user->id, '2021-04-11 12:22:11');
 ```
 
 ### Testing
