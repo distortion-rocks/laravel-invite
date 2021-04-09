@@ -20,6 +20,8 @@ You can install the package via composer:
 ``` php
 $user = Auth::user()
 
+use Distortion\LaravelInvite\Facades\Invite;
+
 /**
  * Will create & save a new invite and return the invite code for use later.
  * @return string code 
