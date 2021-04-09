@@ -1,4 +1,4 @@
-# Laravel Invitations
+# Laravel Invitations [WIP]
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/distortion/laravel-invite.svg?style=flat-square)](https://packagist.org/packages/distortion/laravel-invite)
 [![Build Status](https://github.com/distortion-rocks/laravel-invite/actions/workflows/tests.yml/badge.svg)](https://github.com/distortion-rocks/laravel-invite/actions/workflows/tests.yml)
@@ -11,7 +11,7 @@ Laravel invite provides a clean and simple library to add invitations to any Lar
 You can install the package via composer:
 
 ```bash
-composer require distortion/laravel-invite
+# Still in progress
 ```
 
 ## Usage
