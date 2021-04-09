@@ -10,7 +10,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class InviteTest extends TestCase
 {
-
     use RefreshDatabase;
 
     /** @test */
@@ -25,7 +24,7 @@ class InviteTest extends TestCase
             'email' => 'test@example.com',
             'user_id' => 1,
             'status' => InviteStatus::pending()->value,
-            'code' => $code
+            'code' => $code,
         ]);
     }
 
@@ -42,7 +41,7 @@ class InviteTest extends TestCase
             'user_id' => 1,
             'status' => InviteStatus::pending()->value,
             'expires' => '2021-04-11 12:22:11',
-            'code' => $code
+            'code' => $code,
         ]);
     }
 }
