@@ -1,8 +1,7 @@
 # Laravel Invitations
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/distortion/laravel-invite.svg?style=flat-square)](https://packagist.org/packages/distortion/laravel-invite)
-[![Build Status](https://img.shields.io/travis/distortion/laravel-invite/master.svg?style=flat-square)](https://travis-ci.org/distortion/laravel-invite)
-[![Quality Score](https://img.shields.io/scrutinizer/g/distortion/laravel-invite.svg?style=flat-square)](https://scrutinizer-ci.com/g/distortion/laravel-invite)
+[![Build Status](https://github.com/distortion-rocks/laravel-invite/actions/workflows/tests.yml/badge.svg)](https://github.com/distortion-rocks/laravel-invite/actions/workflows/tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/distortion/laravel-invite.svg?style=flat-square)](https://packagist.org/packages/distortion/laravel-invite)
 
 Laravel invite provides a clean and simple library to add invitations to any Laravel Application.
