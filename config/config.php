@@ -1,15 +1,14 @@
 <?php
 
 /*
- * You can place your custom package configuration in here.
- */
+             * You can place your custom package configuration in here.
+     */
 return [
 
     /**
-     * Default expiration time period
-     * Time defined in hours.
+     * Default expiration time for inivite in hours.
      */
-    'expire' => 48,
+    'expiration' => 48,
 
     /**
      * User model.
