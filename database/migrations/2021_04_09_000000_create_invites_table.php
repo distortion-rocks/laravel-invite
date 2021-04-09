@@ -8,12 +8,12 @@ class CreateInvitesTable extends Migration
 {
     /**
      * Run the migrations.
-     * 
+     *
      * @return void
      */
     public function up()
     {
-        Schema::create('ivnites', function(Blueprint $table) {
+        Schema::create('ivnites', function (Blueprint $table) {
             $table->id();
             $table->string('code')->index();
             $table->string('email');
@@ -26,7 +26,7 @@ class CreateInvitesTable extends Migration
 
     /**
      * Reverse the migrations.
-     * 
+     *
      * @return void
      */
     public function down()

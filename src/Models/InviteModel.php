@@ -14,7 +14,7 @@ class InviteModel extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'expires' => 'datetime'
+        'expires' => 'datetime',
     ];
 
     public function user()
