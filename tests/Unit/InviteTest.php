@@ -57,7 +57,6 @@ class InviteTest extends TestCase
     /** @test */
     public function can_get_instance_of_invite_with_code()
     {
-
         $code = Invite::invite('test@example123.net', 1);
 
         $result = Invite::get($code);

@@ -55,7 +55,7 @@ class LaravelInviteServiceProvider extends ServiceProvider
             ], 'config');
 
             // Migrations
-            if (! class_exists('CreateInvitesTable')) {
+            if (!class_exists('CreateInvitesTable')) {
                 $this->publishes([
                     __DIR__ . '/../database/migrations/create_invites_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_invites_table.php'),
                 ], 'migrations');

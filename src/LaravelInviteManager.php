@@ -5,12 +5,10 @@ namespace Distortion\LaravelInvite;
 use Distortion\LaravelInvite\Contracts\InviteManagerContract;
 use Distortion\LaravelInvite\Enums\InviteStatus;
 use Distortion\LaravelInvite\Exceptions\InvalidTokenException;
-use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class LaravelInviteManager implements InviteManagerContract
 {
-
     /**
      * Instance of invite model.
      */
@@ -73,6 +71,7 @@ class LaravelInviteManager implements InviteManagerContract
 
         if ($this->model->save()) {
             $this->code = $code;
+
             return $this;
         }
     }
@@ -86,6 +85,7 @@ class LaravelInviteManager implements InviteManagerContract
     public function setCode(string $code): LaravelInviteManager
     {
         $this->code = $code;
+
         return $this;
     }
 
@@ -123,7 +123,6 @@ class LaravelInviteManager implements InviteManagerContract
      */
     private function getModelInstance(bool $newInstance = false)
     {
-
         $model = config('laravelinvite.invite-model');
 
         if ($newInstance) {
