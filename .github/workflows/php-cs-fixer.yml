@@ -12,12 +12,28 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - name: Run PHP CS Fixer
-        uses: docker://oskarstark/php-cs-fixer-ga
+      - name: Validate composer.json and composer.lock
+        run: composer validate --strict
+
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v2
         with:
-          args: --config=phpcs.xml --allow-risky=yes
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Check styles
+        run: composer sniff
+
+      - name: Fix styles
+        run: composer sniff-fix
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Fix styling
+          commit_message: PHPCS Fix styling
