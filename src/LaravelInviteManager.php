@@ -12,7 +12,7 @@ class LaravelInviteManager implements InviteManagerContract
     /**
      * Instance of invite model.
      */
-    private $model;
+    public $model;
 
     /**
      * Invitation code.

@@ -10,7 +10,7 @@ use Distortion\LaravelInvite\Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use RuntimeException;
 
-class InviteTest extends TestCase
+class CreateNewInviteTest extends TestCase
 {
     use RefreshDatabase;
 

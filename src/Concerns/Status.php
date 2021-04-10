@@ -43,6 +43,18 @@ trait Status
      */
     public function isExpired()
     {
-        return $this->status === InviteStatus::expired()->value;
+
+        if ($this->status == InviteStatus::expired()->value) {
+            return true;
+        }
+
+        if (strtotime($this->expires) >= time()) {
+            return false;
+        }
+
+        $this->status = InviteStatus::expired()->value;
+        $this->save();
+
+        return true;
     }
 }

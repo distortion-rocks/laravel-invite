@@ -33,6 +33,18 @@ class LaravelInvite implements InviteContract
     }
 
     /**
+     * Verifies that invitation code is valid.
+     * @param string $code
+     * @return bool
+     */
+    public function isValid($code): bool
+    {
+        // !expired, status = pending
+        $invite = $this->manager->setCode($code)->get()->model;
+        return $invite->isPending() && !$invite->isExpired();
+    }
+
+    /**
      * Get invite instance.
      */
     public function get($code)
