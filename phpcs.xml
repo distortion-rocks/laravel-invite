@@ -90,5 +90,9 @@
    <rule ref="Squiz.Classes.ClassFileName"/>
 
    <!-- Expect one space after NOT (!) operator -->
-   <rule ref="Generic.Formatting.SpaceAfterNot"/>
+   <rule ref="Generic.Formatting.SpaceAfterNot">
+      <properties>
+         <property name="spacing" value="0" />
+      </properties>
+   </rule>
 </ruleset>

@@ -12,9 +12,6 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - name: Validate composer.json and composer.lock
-        run: composer validate --strict
-
       - name: Cache Composer packages
         id: composer-cache
         uses: actions/cache@v2
@@ -28,12 +25,18 @@ jobs:
         run: composer install --prefer-dist --no-progress
 
       - name: Check styles
+        continue-on-error: true
         run: composer sniff
 
       - name: Fix styles
         run: composer sniff-fix
 
+      - name: Check if there are changes
+        id: changes
+        uses: UnicornGlobal/has-changes-action@v1.0.11
+
       - name: Commit changes
+        if: steps.changes.outputs.changed == 1
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: PHPCS Fix styling
+          commit_message: Fix styling
