@@ -26,7 +26,7 @@ class LaravelInviteServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'laravelinvite');
 
         // Register the main class to use with the facade
-        $this->app->singleton('invite', function () {
+        $this->app->bind('invite', function () {
             return new LaravelInvite(new LaravelInviteManager());
         });
     }

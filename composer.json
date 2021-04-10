@@ -28,7 +28,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Distortion\\LaravelInvite\\": "src"
+            "Distortion\\LaravelInvite\\": "src",
+            "Distortion\\LaravelInvite\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
