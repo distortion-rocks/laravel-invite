@@ -11,4 +11,15 @@ class TestCase extends Orchestra
     {
         return [LaravelInviteServiceProvider::class];
     }
+
+    /**
+     * Setup migrations
+     */
+    public function getEnvironmentSetUp($app)
+    {
+        include_once __DIR__ . '/../database/migrations/create_invites_table.php.stub';
+
+        // Run migrations
+        (new \CreateInvitesTable())->up();
+    }
 }

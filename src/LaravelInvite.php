@@ -22,7 +22,7 @@ class LaravelInvite implements InviteContract
      * @param string $email
      * @param int $referer
      * @param null $expires
-     * 
+     *
      * @return string
      */
     public function invite($email, $referer, $expires = null): string
@@ -48,7 +48,7 @@ class LaravelInvite implements InviteContract
      */
     private function isValidEmail($email)
     {
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
             throw new RuntimeException("Invalid email: {$email}", 1);
         }
 

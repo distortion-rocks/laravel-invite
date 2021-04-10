@@ -2,7 +2,6 @@
 
 namespace Distortion\LaravelInvite;
 
-use Carbon\Carbon;
 use Distortion\LaravelInvite\Contracts\InviteManagerContract;
 use Distortion\LaravelInvite\Enums\InviteStatus;
 use Distortion\LaravelInvite\Exceptions\InvalidTokenException;
@@ -25,11 +24,15 @@ class LaravelInviteManager implements InviteManagerContract
     /**
      * Params for invite.
      */
-    public $email, $referer, $expires;
+    public $email;
+
+    public $referer;
+
+    public $expires;
 
     /**
      * Create a new invitation.
-     * 
+     *
      */
     public function invite(string $email, int $referrer_id, ?string $expiration_date = null): string
     {
@@ -54,7 +57,7 @@ class LaravelInviteManager implements InviteManagerContract
 
     /**
      * Save a new invite model.
-     * 
+     *
      * @param string $code
      * @return self
      */
@@ -76,7 +79,7 @@ class LaravelInviteManager implements InviteManagerContract
 
     /**
      * Set the invite code.
-     * 
+     *
      * @param string $code
      * @return self
      */
@@ -88,7 +91,7 @@ class LaravelInviteManager implements InviteManagerContract
 
     /**
      * Generate a new ivnite token key.
-     * 
+     *
      * @return string
      */
     private function generateInviteToken(): string
@@ -113,7 +116,7 @@ class LaravelInviteManager implements InviteManagerContract
 
     /**
      * Get the new instance of the invite model.
-     * 
+     *
      * @param bool $newInstance
      * @return Model
      * @throws InvalidTokenException
@@ -124,12 +127,12 @@ class LaravelInviteManager implements InviteManagerContract
         $model = config('laravelinvite.invite-model');
 
         if ($newInstance) {
-            $this->model = new $model;
+            $this->model = new $model();
             return $this;
         }
 
         try {
-            $this->model = (new $model)->where('code', $this->code)->firstOrFail();
+            $this->model = (new $model())->where('code', $this->code)->firstOrFail();
             return $this;
         } catch (ModelNotFoundException $e) {
             throw new InvalidTokenException("Invalid token: {$this->code}", 401);

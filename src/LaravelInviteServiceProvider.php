@@ -55,9 +55,11 @@ class LaravelInviteServiceProvider extends ServiceProvider
             ], 'config');
 
             // Migrations
-            $this->publishes([
-                __DIR__ . '/../database/migrations/2021_04_09_000000_create_invites_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_invites_table.php'),
-            ], 'migrations');
+            if (! class_exists('CreateInvitesTable')) {
+                $this->publishes([
+                    __DIR__ . '/../database/migrations/create_invites_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_invites_table.php'),
+                ], 'migrations');
+            }
         }
     }
 }
